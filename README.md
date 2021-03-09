@@ -11,12 +11,10 @@ import {memo} from "react";
 
 const BlueBlock = memo(() => {
     return (
-        return (
-            <svg>
-                <rect className="rect" width="200" height="200" fill="red" />
-                <text y={15}>This is a red block</text>
-            </svg>
-        );
+        <svg>
+            <rect className="rect" width="200" height="200" fill="red" />
+            <text y={15}>This is a red block</text>
+        </svg>
     );
 })
 ```
