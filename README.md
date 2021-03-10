@@ -32,6 +32,10 @@ const BlueBlock = memo(() => {
 
 (样式不必与此图一模一样，内容相同即可)
 
+## 最终效果（参考）
+
+[最终效果（参考）](https://tsp.globus.furniture/)
+
 ## 任务描述
 
 1. 有两个面板
