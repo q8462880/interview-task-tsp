@@ -1,0 +1,27 @@
+.tsp-board-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.board-container {
+    margin-top: 20px;
+    margin-right: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.panel-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+p {
+    width: 100%;
+    margin: 0 !important;
+}

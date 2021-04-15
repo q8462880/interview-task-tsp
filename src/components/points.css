@@ -1,0 +1,6 @@
+.point-block {
+    border-top: 1px solid rgb(133, 133, 133);
+    padding: 0px 5px;
+    border-left: 1px solid rgb(133, 133, 133);
+    border-right: 1px solid rgb(133, 133, 133);
+}
