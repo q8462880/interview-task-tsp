@@ -6,5 +6,6 @@ export const TspBoardStatus = {
     combinations: 0,
     estimatedTime: 0,
     points: [],
-    lines: []
+    lines: [],
+    distance: 0
 };

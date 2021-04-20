@@ -1,5 +1,5 @@
 import "./points.css";
-export default function Points({ points }) {
+export default function Points({ points, distance }) {
     return (
         <div>
             <h3>Points ({points.length}))</h3>
@@ -12,7 +12,7 @@ export default function Points({ points }) {
                         </div>
                     );
                 })}
-                <div>Route length:</div>
+                <div>Route length:{distance}</div>
             </div>
         </div>
     );

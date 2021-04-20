@@ -3,7 +3,7 @@ export default function Panel({ isResult, points, lines, addPoint }) {
     const keyName = isResult ? 'result' : 'process'
     return (
         <div>
-            <p style={{ margin: "0" }}>test</p>
+            <p style={{ margin: "0" }}>{keyName}</p>
             <svg
                 onClick={isResult ? null : (e) => { addPoint(e) }}
                 className="rect"
