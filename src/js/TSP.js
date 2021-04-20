@@ -5,12 +5,16 @@
 'use strict'
 
 import wait from '../libs/wait'
-import shuffle from '../libs/shuffle'
+import {
+    shuffle
+} from './foundation'
 import GA from './GA'
 
 export default class TSP {
     constructor(onstart, onstop) {
+        // 种群
         this.nodes = []
+
         this.orders = []
         this.r = 4
         this.lw = 2
@@ -21,26 +25,27 @@ export default class TSP {
         this._onstop = onstop
     }
 
-    makeRandomNodes(n = 32, life_count = 100) {
+    // 传入城市信息
+    prepareNodesAndGA(nodes = [], life_count = nodes.length * 2) {
         this.is_running = false
-        this.n = n
+        this.n = nodes.length;
+        /** 个头数量，为节点数量的两倍 */
         this.life_count = life_count
+        /** 个体详细信息 [{x:123,y:123},{x:223,y:223},...]*/
         this.nodes = []
+        /** 基因序列 [1,2,3,4...]*/
         this.orders = []
 
-        let padding = 20
-
-        for (let i = 0; i < n; i++) {
-            this.nodes.push({
-                x: Math.floor(Math.random() * (this.width - padding * 2)) + padding,
-                y: Math.floor(Math.random() * (this.height - padding * 2)) + padding
-            })
-            this.orders.push(i)
-        }
+        nodes.forEach((item, index) => {
+            this.nodes.push(item);
+            this.orders.push(index)
+        })
 
         shuffle(this.orders)
+        /** 基因序列首尾相连 */
         this.orders.push(this.orders[0])
 
+        /** 遗传算法类，封装种群数量，突变几率，基因长度，计算适应度，交换，变异方法 */
         this.ga = new GA({
             life_count: this.life_count,
             mutation_rate: this.mutation_rate,
@@ -55,6 +60,7 @@ export default class TSP {
         return 1 / this.getDistance(gene)
     }
 
+    /**父代交换基因，生成新基因 */
     xFunc(lf1, lf2) {
         let p1 = Math.floor(Math.random() * (this.n - 2)) + 1
         let p2 = Math.floor(Math.random() * (this.n - p1)) + p1
@@ -69,6 +75,7 @@ export default class TSP {
         return new_gene
     }
 
+    /**个体基因突变 */
     mFunc(gene) {
         let p1 = 0
         let p2 = 0

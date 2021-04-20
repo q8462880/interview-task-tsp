@@ -11,6 +11,7 @@ export default class GA {
     this.x_rate = options.x_rate || 0.7
     this.mutation_rate = options.mutation_rate || 0.005
     this.life_count = options.life_count || 50
+    /**基因长度 */
     this.gene_length = options.gene_length || 100
     this.mutation_count = 0
     this.generation = 0
