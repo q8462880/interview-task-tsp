@@ -4,9 +4,10 @@ export default function Points({ points }) {
         <div>
             <h3>Points ({points.length}))</h3>
             <div style={{ width: "300px" }}>
-                {points.map((element) => {
+                {points.map((element, index) => {
                     return (
-                        <div className="point-block">
+                        <div className="point-block"
+                            key={element.x + element.y + element.fill}>
                             x:{element.x} y:{element.y}
                         </div>
                     );
