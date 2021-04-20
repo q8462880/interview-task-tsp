@@ -4,7 +4,9 @@
 
 'use strict'
 
-import shuffle from '../js/foundation'
+import {
+    shuffle
+} from '../js/foundation'
 // 个体
 export default class Life {
     // 基因

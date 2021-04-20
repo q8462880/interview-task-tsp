@@ -4,9 +4,9 @@
 
 'use strict'
 
-import wait from '../libs/wait'
 import {
-    shuffle
+    shuffle,
+    wait
 } from './foundation'
 import GA from './GA'
 
@@ -26,11 +26,11 @@ export default class TSP {
     }
 
     // 传入城市信息
-    prepareNodesAndGA(nodes = [], life_count = nodes.length * 2) {
+    prepareNodesAndGA(nodes = [], life_count = 100) {
         this.is_running = false
         this.n = nodes.length;
         /** 个头数量，为节点数量的两倍 */
-        this.life_count = life_count
+        this.life_count = life_count;
         /** 个体详细信息 [{x:123,y:123},{x:223,y:223},...]*/
         this.nodes = []
         /** 基因序列 [1,2,3,4...]*/
@@ -187,7 +187,8 @@ export default class TSP {
             }
 
             if (this.ga.generation % 10 === 0) {
-                this.render()
+                // this.render()
+                console.log(this.orders)
             }
             await wait(1)
         }

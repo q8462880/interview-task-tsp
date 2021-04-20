@@ -23,3 +23,17 @@ export function shuffle(arr) {
 }
 
 export const wait = (ms) => new Promise(resolve => setTimeout(resolve, ms))
+
+export function getLines(arr) {
+    let temp = []
+    arr.forEach((item, index) => {
+        temp.push({
+            x1: arr[index].x,
+            y1: arr[index].y,
+            x2: index === arr.length - 1 ? arr[0].x : arr[index + 1].x,
+            y2: index === arr.length - 1 ? arr[0].y : arr[index + 1].y,
+            stroke: item.fill
+        })
+    })
+    return temp
+}
