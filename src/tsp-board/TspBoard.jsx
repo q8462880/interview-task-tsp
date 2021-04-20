@@ -23,7 +23,7 @@ export default function TspBoard() {
 
     const refreshStatu = (info) => {
         setLines(getLinesByOrders(points, info.orders));
-        setDistance(info.distance)
+        setDistance(tsp.getDistance(info.orders))
     }
 
     const getResult = (e) => {
