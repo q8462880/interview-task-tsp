@@ -165,7 +165,7 @@ export default class TSP {
         })
     }
 
-    async run() {
+    async run(refreshStates) {
         let last_best_score = -1
         let last_best_gen = 0
 
@@ -190,13 +190,16 @@ export default class TSP {
                 // this.render()
                 console.log(this.orders)
             }
+            refreshStates({
+                orders: this.orders
+            })
             await wait(1)
         }
     }
 
-    start() {
+    start(refreshStatu) {
         this.is_running = true
-        this.run()
+        this.run(refreshStatu)
         if (typeof this._onstart === 'function') {
             this._onstart()
         }

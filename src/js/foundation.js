@@ -24,6 +24,7 @@ export function shuffle(arr) {
 
 export const wait = (ms) => new Promise(resolve => setTimeout(resolve, ms))
 
+
 export function getLines(arr) {
     let temp = []
     arr.forEach((item, index) => {
@@ -35,5 +36,14 @@ export function getLines(arr) {
             stroke: item.fill
         })
     })
+    return temp
+}
+
+export function getLinesByOrders(points, orders) {
+    let temp = []
+    temp = orders.map((number, index) => {
+        return points[number]
+    })
+    temp = getLines(temp)
     return temp
 }

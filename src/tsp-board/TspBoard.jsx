@@ -3,7 +3,7 @@ import React, { useState, useMemo } from "react";
 import { TspBoardStatus } from "./TspBoardConst";
 import Panel from "../components/Panel";
 import Points from "../components/points";
-import { getRandom, getLines } from '../js/foundation'
+import { getRandom, getLines, getLinesByOrders } from '../js/foundation'
 import TSP from '../js/TSP'
 export default function TspBoard() {
     const [start, setStart] = useState(TspBoardStatus.start);
@@ -19,6 +19,11 @@ export default function TspBoard() {
         () => {
             return new TSP(() => { }, () => { })
         }, [])
+
+    const refreshStatu = (info) => {
+        setLines(getLinesByOrders(points, info.orders));
+    }
+
     const getResult = (e) => {
         if (start) {
             setStart(false)
@@ -27,9 +32,10 @@ export default function TspBoard() {
             setStart(true)
             tsp.prepareNodesAndGA(points, 100)
             setLines(getLines(points));
-            tsp.start()
+            tsp.start(refreshStatu)
         }
     }
+
     return (
         <div className="tsp-board-container">
             <div className="board-container">
