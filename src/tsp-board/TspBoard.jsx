@@ -1,5 +1,5 @@
 import "./TspBoard.css";
-import React, { useState, useEffect } from "react";
+import React, { useState, useMemo } from "react";
 import { TspBoardStatus } from "./TspBoardConst";
 import Panel from "../components/Panel";
 import Points from "../components/points";
@@ -15,12 +15,16 @@ export default function TspBoard() {
     const addPoint = (e) => {
         setPoints([...points, { x: e.nativeEvent.offsetX, y: e.nativeEvent.offsetY, city: points.length + 1, fill: getRandom() }])
     }
+    const tsp = useMemo(
+        () => {
+            return new TSP(() => { }, () => { })
+        }, [])
     const getResult = (e) => {
         if (start) {
             setStart(false)
+            tsp.stop()
         } else {
             setStart(true)
-            const tsp = new TSP(() => { }, () => { })
             tsp.prepareNodesAndGA(points, 100)
             setLines(getLines(points));
             tsp.start()
