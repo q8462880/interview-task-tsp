@@ -22,6 +22,7 @@ export default function TspBoard() {
                     <div style={{ width: "2vw" }}></div>
                     <Panel isResult={true} points={points}></Panel>
                 </div>
+                <button className="handle-button">start</button>
             </div>
             <Points points={points}></Points>
         </div>

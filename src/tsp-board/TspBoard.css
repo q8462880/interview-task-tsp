@@ -21,7 +21,12 @@
     align-items: center;
     flex-wrap: wrap;
 }
+
 p {
     width: 100%;
     margin: 0 !important;
+}
+
+button.handle-button {
+    width: 100%;
 }
