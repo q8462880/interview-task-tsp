@@ -149,6 +149,7 @@ export default class TSP {
 
             if (this.ga.generation % 10 === 0) {
                 console.log(this.orders)
+                console.log(best)
             }
             refreshStates({
                 orders: this.orders,
